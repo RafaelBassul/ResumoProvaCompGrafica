@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Resumão para prova de Computação Gráfica - Cores, Transformações, Visualização, Rasterização e Projeções">
+    <meta name="description" content="Resumão para prova de Computação Gráfica">
     <title>Resumão — Computação Gráfica</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -14,7 +14,7 @@
             --surface3: #232d45;
             --border: #2a3555;
             --text: #e2e8f0;
-            --text-dim: #94a3b8;
+            --text-dim: #94a3b8;/
             --accent: #6366f1;
             --accent2: #818cf8;
             --accent-glow: rgba(99,102,241,0.15);
@@ -40,7 +40,6 @@
             line-height: 1.7;
             font-size: 15px;
         }
-        /* ===== HEADER ===== */
         .hero {
             position: relative;
             padding: 60px 20px 40px;
@@ -64,7 +63,6 @@
             letter-spacing: -1px;
         }
         .hero p { position:relative; color:var(--text-dim); margin-top:10px; font-size:1.05rem; }
-        /* ===== NAV ===== */
         .nav-bar {
             position: sticky; top:0; z-index:100;
             background: rgba(10,14,26,0.85);
@@ -90,7 +88,6 @@
             white-space: nowrap;
         }
         .nav-bar a:hover, .nav-bar a.active { color:var(--accent2); border-bottom-color:var(--accent); }
-        /* ===== SECTIONS ===== */
         .container { max-width:960px; margin:0 auto; padding:0 20px; }
         section { padding: 48px 0 32px; }
         section + section { border-top: 1px solid var(--border); }
@@ -107,7 +104,6 @@
             display:flex;align-items:center;justify-content:center;
             font-size:1.2rem;
         }
-        /* ===== CARDS ===== */
         .card {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -128,9 +124,7 @@
         .card li { margin-bottom: 6px; color: var(--text-dim); }
         .card li strong { color: var(--text); font-weight:600; }
         .card p { color: var(--text-dim); margin-bottom:8px; }
-        /* ===== GRIDS ===== */
         .grid2 { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:16px; margin-bottom:20px; }
-        /* ===== HIGHLIGHT BOXES ===== */
         .highlight {
             border-radius: 12px;
             padding: 18px 20px;
@@ -144,13 +138,11 @@
         .highlight.yellow { background:var(--yellow-dim); border-color:var(--yellow); }
         .highlight.red    { background:var(--red-dim);    border-color:var(--red);     }
         .highlight b { font-weight:700; }
-        /* ===== TABLES ===== */
         .table-wrap { overflow-x:auto; margin-bottom:20px; border-radius:12px; border:1px solid var(--border); }
         table { width:100%; border-collapse:collapse; font-size:0.88rem; }
         th { background:var(--surface2); color:var(--accent2); font-weight:700; text-align:left; padding:12px 16px; white-space:nowrap; }
         td { padding:10px 16px; border-top:1px solid var(--border); color:var(--text-dim); }
         tr:hover td { background:var(--surface2); }
-        /* ===== CODE / ALGO ===== */
         .algo {
             background: var(--surface2);
             border: 1px solid var(--border);
@@ -162,11 +154,11 @@
             line-height: 1.8;
             overflow-x: auto;
             color: var(--green);
+            white-space: pre;
         }
         .algo .kw { color: var(--pink); font-weight:600; }
         .algo .cm { color: var(--text-dim); font-style:italic; }
-        /* ===== MATRIX ===== */
-        .matrix-container { display:flex; flex-wrap:wrap; gap:20px; margin:12px 0 16px; align-items:center; }
+        .matrix-container { display:flex; flex-wrap:wrap; gap:20px; margin:12px 0 16px; align-items:flex-start; }
         .matrix {
             display:inline-grid;
             gap:0;
@@ -177,25 +169,23 @@
             font-size: 0.85rem;
             border: 1px solid var(--border);
         }
-        .matrix.m2x2 { grid-template-columns: repeat(2,auto); }
         .matrix.m3x3 { grid-template-columns: repeat(3,auto); }
         .matrix.m4x4 { grid-template-columns: repeat(4,auto); }
         .matrix span { padding:4px 10px; text-align:center; color:var(--cyan); }
         .matrix-label { font-weight:700; color:var(--text); font-size:0.9rem; margin-bottom:4px; }
-        /* ===== TAGS ===== */
-        .tag {
-            display:inline-block;
-            padding:3px 10px;
-            border-radius:6px;
-            font-size:0.72rem;
-            font-weight:700;
-            text-transform:uppercase;
-            letter-spacing:0.5px;
+        .formula-box {
+            background: var(--surface2);
+            border: 1px solid var(--accent);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 16px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 2;
+            color: var(--cyan);
+            text-align: center;
         }
-        .tag.important { background:var(--pink-dim); color:var(--pink); }
-        .tag.formula { background:var(--cyan-dim); color:var(--cyan); }
-        .tag.tip { background:var(--green-dim); color:var(--green); }
-        /* ===== ACCORDION ===== */
+        .formula-box .label { color:var(--text); font-family:'Inter',sans-serif; font-weight:700; font-size:0.85rem; margin-bottom:8px; display:block; text-align:left; }
         details {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -215,12 +205,9 @@
         summary::marker { color: var(--accent); }
         details[open] summary { border-bottom:1px solid var(--border); }
         details .content { padding: 18px 20px; }
-        /* ===== FOOTER ===== */
         footer { text-align:center; padding:40px 20px; color:var(--text-dim); font-size:0.8rem; border-top:1px solid var(--border); }
-        /* ===== ANIMATIONS ===== */
         @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
         .card, .highlight, details, .table-wrap { animation: fadeUp .5s ease both; }
-        /* ===== RESPONSIVE ===== */
         @media(max-width:600px){
             .hero h1{font-size:1.8rem}
             .card{padding:18px}
@@ -230,13 +217,11 @@
 </head>
 <body>
 
-<!-- HERO -->
 <header class="hero">
     <h1>📐 Resumão — Computação Gráfica</h1>
     <p>Tudo que você precisa para a prova, direto ao ponto.</p>
 </header>
 
-<!-- NAV -->
 <nav class="nav-bar" id="nav">
     <a href="#cores">🎨 Cores</a>
     <a href="#imagens">🖼️ Imagens</a>
@@ -295,75 +280,69 @@
     <div class="card">
         <h3><span class="dot" style="background:var(--orange)"></span>Células Receptoras do Olho</h3>
         <ul>
-            <li><strong>Cones:</strong> receptores de cor. Existem 3 tipos (sensíveis a R, G, B). Funcionam bem com luz forte.</li>
-            <li><strong>Bastonetes:</strong> receptores de intensidade luminosa (visão noturna, tons de cinza). Mais sensíveis à luz fraca.</li>
+            <li><strong>Cones:</strong> receptores de cor. 3 tipos (R, G, B). Funcionam com luz forte.</li>
+            <li><strong>Bastonetes:</strong> receptores de intensidade (visão noturna, tons de cinza). Sensíveis à luz fraca.</li>
         </ul>
-        <p style="margin-top:8px"><b>Nem todo ser humano percebe cor da mesma forma</b> — daltonismo, diferenças individuais nos cones, condições de iluminação diferentes.</p>
-    </div>
-
-    <!-- MODELOS DE COR -->
-    <div class="card">
-        <h3><span class="dot" style="background:var(--green)"></span>Modelos de Cores</h3>
-        <p><b>Modelos de cores</b> fornecem métodos para definir cores convertendo-as em dados numéricos consistentes.</p>
+        <p style="margin-top:8px"><b>Nem todo ser humano percebe cor da mesma forma</b> — daltonismo, diferenças nos cones, condições de iluminação.</p>
     </div>
 
     <div class="table-wrap">
         <table>
             <thead>
-                <tr><th>Modelo</th><th>Tipo</th><th>Componentes</th><th>Uso</th><th>Vantagens / Desvantagens</th></tr>
+                <tr><th>Modelo</th><th>Tipo</th><th>Componentes</th><th>Uso</th><th>Vant. / Desvant.</th></tr>
             </thead>
             <tbody>
                 <tr>
                     <td><b style="color:var(--red)">RGB</b></td>
                     <td>Aditivo</td>
-                    <td>Red, Green, Blue (0-255 cada)</td>
-                    <td>Monitores, telas, emissão de luz</td>
+                    <td>Red, Green, Blue (0-255)</td>
+                    <td>Monitores, telas</td>
                     <td>✅ ~16,7M cores (24 bits) / ❌ Pouco intuitivo</td>
                 </tr>
                 <tr>
                     <td><b style="color:var(--cyan)">CMYK</b></td>
                     <td>Subtrativo</td>
                     <td>Cyan, Magenta, Yellow, blacK</td>
-                    <td>Impressão em papel</td>
-                    <td>✅ Ideal para impressão / ❌ CMY puros não fazem preto perfeito → adicionou K</td>
+                    <td>Impressão</td>
+                    <td>✅ Ideal para papel / ❌ CMY puros ≠ preto → adicionou K</td>
                 </tr>
                 <tr>
                     <td><b style="color:var(--yellow)">HSV/HSB</b></td>
                     <td>Perceptual</td>
-                    <td>Hue (0-359°), Saturation (0-100%), Value (0-100%)</td>
-                    <td>Interfaces de seleção de cor</td>
-                    <td>✅ Intuitivo, fácil de implementar / ❌ Pode variar entre dispositivos</td>
+                    <td>Hue 0-359°, Sat 0-100%, Value 0-100%</td>
+                    <td>Interfaces de cor</td>
+                    <td>✅ Intuitivo / ❌ Varia entre dispositivos</td>
                 </tr>
                 <tr>
                     <td><b style="color:var(--accent2)">HSL</b></td>
                     <td>Perceptual</td>
                     <td>Hue, Saturation, Lightness</td>
-                    <td>Aplicações gráficas</td>
-                    <td>✅ Mais próximo da percepção humana (claro/escuro)</td>
+                    <td>Apps gráficos</td>
+                    <td>✅ Mais próximo da percepção humana</td>
                 </tr>
                 <tr>
                     <td><b style="color:var(--text)">XYZ (CIE)</b></td>
-                    <td>Aditivo/Universal</td>
+                    <td>Universal</td>
                     <td>3 primárias virtuais X, Y, Z</td>
-                    <td>Padrão universal, conversão entre modelos</td>
-                    <td>✅ Independente de dispositivo / ❌ Mais complexo</td>
+                    <td>Conversão entre modelos</td>
+                    <td>✅ Independente de dispositivo / ❌ Complexo</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
     <div class="highlight pink">
-        <b>Processo Aditivo (RGB):</b> soma de luzes → mais luz = mais claro. R+G = Amarelo, R+B = Magenta, G+B = Ciano. Tudo junto = Branco.<br>
-        <b>Processo Subtrativo (CMYK):</b> subtração de luz → mais tinta = mais escuro. C+M = Azul, C+Y = Verde, M+Y = Vermelho. Tudo junto ≈ Preto.
+        <b>Aditivo (RGB):</b> soma de luzes → R+G=Amarelo, R+B=Magenta, G+B=Ciano. Tudo=Branco.<br>
+        <b>Subtrativo (CMYK):</b> subtração de luz → C+M=Azul, C+Y=Verde, M+Y=Vermelho. Tudo≈Preto.
     </div>
 
     <div class="highlight orange">
-        <b>CMY → CMYK:</b> Na teoria C+M+Y = preto, mas tintas reais produzem marrom turvo. O K (preto) foi adicionado para preto puro, economia de tinta e melhor qualidade de impressão.
+        <b>CMY → CMYK:</b> Na teoria C+M+Y = preto, mas tintas reais = marrom turvo. K (preto) adicionado para preto puro e economia de tinta.
     </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- 2. IMAGENS VETORIAIS x MATRICIAIS -->
+<!-- 2. IMAGENS -->
 <!-- ============================================================ -->
 <section id="imagens">
     <div class="section-title">
@@ -375,50 +354,47 @@
         <div class="card">
             <h3><span class="dot" style="background:var(--green)"></span>Imagem Vetorial</h3>
             <ul>
-                <li><strong>Representação:</strong> objetos geométricos (pontos, linhas, curvas) + parâmetros</li>
-                <li>✅ Escala sem perda de qualidade (recalculada geometricamente)</li>
+                <li><strong>Representação:</strong> objetos geométricos + parâmetros</li>
+                <li>✅ Escala sem perda (recalculada geometricamente)</li>
                 <li>✅ Arquivos menores para gráficos simples</li>
-                <li>✅ Facilidade de edição e manipulação</li>
-                <li>❌ Requer mais processamento para exibir</li>
-                <li>❌ Inadequada para fotos complexas</li>
-                <li><b>Ideal para:</b> logos, ícones, CAD, ilustrações</li>
+                <li>✅ Facilidade de edição</li>
+                <li>❌ Mais processamento para exibir</li>
+                <li>❌ Inadequada para fotos</li>
+                <li><b>Ideal:</b> logos, ícones, CAD</li>
             </ul>
         </div>
         <div class="card">
             <h3><span class="dot" style="background:var(--pink)"></span>Imagem Matricial (Raster)</h3>
             <ul>
-                <li><strong>Representação:</strong> grade (matriz) de pixels com valores de cor</li>
-                <li>✅ Fácil exibição em monitores/impressoras</li>
-                <li>✅ Ideal para fotos e imagens complexas</li>
-                <li>✅ Pixels podem ser alterados individualmente</li>
-                <li>❌ Perde qualidade ao ampliar (aliasing/serrilhado)</li>
-                <li>❌ Arquivos grandes em alta resolução</li>
-                <li><b>Ideal para:</b> fotografias, texturas, imagens reais</li>
+                <li><strong>Representação:</strong> grade de pixels com cor</li>
+                <li>✅ Fácil exibição em telas/impressoras</li>
+                <li>✅ Ideal para fotos</li>
+                <li>✅ Pixels alterados individualmente</li>
+                <li>❌ Perde qualidade ao ampliar (aliasing)</li>
+                <li>❌ Arquivos grandes</li>
+                <li><b>Ideal:</b> fotografias, texturas</li>
             </ul>
         </div>
     </div>
 
     <div class="highlight yellow">
-        <b>Aliasing (serrilhado):</b> degraus visíveis quando linhas inclinadas são desenhadas em grade discreta de pixels. Mitigação: <b>anti-aliasing</b> (suaviza bordas usando cores intermediárias).
+        <b>Aliasing (serrilhado):</b> degraus visíveis em linhas inclinadas na grade discreta. Mitigação: <b>anti-aliasing</b>. Na rasterização, a semântica dos objetos (linhas, curvas) é <b>perdida</b> — restam apenas pixels.
     </div>
 
     <div class="card">
-        <h3><span class="dot" style="background:var(--accent)"></span>Resolução</h3>
+        <h3><span class="dot" style="background:var(--accent)"></span>Resolução e Profundidade de Cor</h3>
         <ul>
-            <li><strong>Pixels da imagem:</strong> largura × altura em pixels</li>
-            <li><strong>PPI (pixels por polegada):</strong> densidade de pixels na tela</li>
-            <li><strong>DPI (pontos por polegada):</strong> resolução de impressoras</li>
-            <li><strong>Amostragem scanner:</strong> resolução de digitalização</li>
+            <li><strong>Pixels:</strong> largura × altura | <strong>PPI:</strong> pixels/polegada (tela) | <strong>DPI:</strong> pontos/polegada (impressora)</li>
+            <li><b>1 bit</b> = 2 níveis (P&B) | <b>8 bits</b> = 256 níveis | <b>24 bits</b> = ~16,7M (true color) | <b>32 bits</b> = 24 + 8 alfa</li>
         </ul>
-        <p style="margin-top:8px"><b>Profundidade de cor:</b> 1 bit = 2 níveis (P&B) | 8 bits = 256 níveis (escala de cinza) | 24 bits = ~16,7M cores (true color) | 32 bits = 24 + 8 de transparência (canal alfa)</p>
     </div>
 
     <div class="card">
         <h3><span class="dot" style="background:var(--orange)"></span>Quantização e Dithering</h3>
         <ul>
-            <li><strong>Quantização:</strong> exibir imagem com menos cores. Algoritmos: populosidade, corte mediano</li>
-            <li><strong>Dithering:</strong> sobrepor pixels de cores diferentes para simular uma terceira cor (o cérebro faz a "média")</li>
-            <li>Com ~32 níveis o contorno praticamente desaparece; com 64 níveis é imperceptível</li>
+            <li><strong>Quantização:</strong> reduzir nº de cores. Algoritmos: populosidade, corte mediano</li>
+            <li><strong>Dithering:</strong> pixels de cores diferentes simulam terceira cor (cérebro faz "média")</li>
+            <li>~32 níveis: contorno quase imperceptível; 64 níveis: desaparece</li>
         </ul>
     </div>
 </section>
@@ -433,12 +409,11 @@
     </div>
 
     <div class="highlight green">
-        <b>Coordenadas Homogêneas:</b> Para unificar translação com as demais transformações lineares, usamos coordenadas homogêneas: ponto (x,y) → [x, y, 1]. Todas as transformações viram matrizes <b>3×3</b>.
+        <b>Coordenadas Homogêneas:</b> (x,y) → [x, y, 1]. Todas as transformações viram matrizes <b>3×3</b>, incluindo translação.
     </div>
 
     <div class="card">
         <h3><span class="dot" style="background:var(--cyan)"></span>Matrizes de Transformação 2D</h3>
-
         <div class="matrix-container">
             <div>
                 <div class="matrix-label">Translação T(tx, ty)</div>
@@ -494,11 +469,11 @@
     </div>
 
     <div class="highlight pink">
-        <b>⚠️ Composição de Transformações:</b> Multiplica-se as matrizes na <b>ordem inversa</b> da aplicação. Ex: primeiro rotação, depois escala, depois translação → M = T × S × R. O ponto final: P' = M × P.
+        <b>⚠️ Composição:</b> Multiplica-se na <b>ordem inversa</b>. Ex: rotação → escala → translação ⇒ M = T × S × R. Ponto final: P' = M × P.
     </div>
 
     <div class="highlight orange">
-        <b>Transformação em torno de ponto P arbitrário:</b> 1) Translada P → origem, 2) Aplica transformação, 3) Translada de volta. M = T(px,py) × Transf × T(−px,−py)
+        <b>Em torno de ponto P arbitrário:</b> 1) T(−px,−py), 2) Transformação, 3) T(px,py). → M = T(p) × Transf × T(−p)
     </div>
 </section>
 
@@ -512,7 +487,7 @@
     </div>
 
     <div class="highlight cyan">
-        Em 3D usamos matrizes <b>4×4</b> com coordenadas homogêneas: (x,y,z) → [x, y, z, 1].
+        Em 3D: matrizes <b>4×4</b> com coordenadas homogêneas (x,y,z) → [x, y, z, 1].
     </div>
 
     <div class="card">
@@ -570,12 +545,12 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- 5. VISUALIZAÇÃO 2D -->
+<!-- 5. VISUALIZAÇÃO 2D + WINDOW-VIEWPORT -->
 <!-- ============================================================ -->
 <section id="vis2d">
     <div class="section-title">
         <div class="icon" style="background:var(--yellow-dim)">👁️</div>
-        5 — Visualização 2D (Pipeline)
+        5 — Visualização 2D e Transformação Window-Viewport
     </div>
 
     <div class="card">
@@ -585,31 +560,78 @@
 
     <div class="highlight green">
         <b>Pipeline de Visualização 2D:</b><br>
-        SRO (objeto) → <b>Instanciamento</b> → SRU (universo) → <b>Recorte (Window)</b> → SRS (seleção) → <b>Mapeamento (Viewport)</b> → SRD (dispositivo) → <b>Rasterização</b>
+        SRO (objeto) → <b>Instanciamento</b> → SRU (universo) → <b>Recorte (Window)</b> → SRS (seleção) → <b>Mapeamento Window→Viewport</b> → SRD (dispositivo) → <b>Rasterização</b>
     </div>
 
     <div class="card">
         <h3><span class="dot" style="background:var(--pink)"></span>Etapas do Pipeline</h3>
         <ul>
-            <li><strong>Instanciamento:</strong> criar cópias de modelos com transformações (escala, rotação, translação). Economiza memória.</li>
+            <li><strong>Instanciamento:</strong> cópias de modelos com transformações (escala, rotação, translação). Economiza memória.</li>
             <li><strong>Recorte (Clipping):</strong> define qual região do universo será exibida. Objetos fora da janela são descartados.</li>
-            <li><strong>Window:</strong> porção do mundo que será desenhada (coordenadas do SRU)</li>
-            <li><strong>Viewport:</strong> porção da tela onde o conteúdo será mapeado (coordenadas do SRD)</li>
-            <li><strong>Mapeamento:</strong> converte coordenadas do mundo (SRU) para coordenadas da tela (SRD)</li>
+            <li><strong>Window (Janela de Seleção):</strong> porção do mundo que será desenhada — coordenadas do SRU.</li>
+            <li><strong>Viewport (Janela de Exibição):</strong> porção da tela onde será mapeado — coordenadas do SRD.</li>
+            <li><strong>Mapeamento:</strong> converte coordenadas mundo (SRU) → tela (SRD).</li>
         </ul>
     </div>
 
-    <div class="highlight orange">
-        <b>Window-Viewport:</b> Para evitar distorções, a Window e a Viewport devem ter a <b>mesma razão de aspecto</b>. Calcula-se a Window em função do bounding box do modelo e das dimensões da Viewport.
+    <!-- ===== WINDOW-VIEWPORT TRANSFORMATION ===== -->
+    <div class="card" style="border-color:var(--accent); box-shadow:0 0 20px var(--accent-glow);">
+        <h3><span class="dot" style="background:var(--accent)"></span>🔑 Transformação Window → Viewport</h3>
+        <p>A transformação Window–Viewport mapeia coordenadas do <b>mundo</b> (window) para coordenadas da <b>tela</b> (viewport). Cada ponto (x, y) do mundo é convertido para (xv, yv) na tela.</p>
+
+        <div class="formula-box">
+            <span class="label">📐 Fórmulas de Mapeamento Window → Viewport</span>
+            x<sub>v</sub> = x<sub>v_min</sub> + (x − x<sub>w_min</sub>) × (x<sub>v_max</sub> − x<sub>v_min</sub>) / (x<sub>w_max</sub> − x<sub>w_min</sub>)<br><br>
+            y<sub>v</sub> = y<sub>v_min</sub> + (y − y<sub>w_min</sub>) × (y<sub>v_max</sub> − y<sub>v_min</sub>) / (y<sub>w_max</sub> − y<sub>w_min</sub>)
+        </div>
+
+        <p>Ou de forma matricial, é uma composição de <b>3 transformações</b>:</p>
+        <ol style="padding-left:20px; color:var(--text-dim); margin:10px 0;">
+            <li><b style="color:var(--text)">Translação</b> — leva o canto inferior da Window para a origem: T(−x<sub>w_min</sub>, −y<sub>w_min</sub>)</li>
+            <li><b style="color:var(--text)">Escala</b> — ajusta a proporção Window → Viewport:<br>
+                S<sub>x</sub> = (x<sub>v_max</sub> − x<sub>v_min</sub>) / (x<sub>w_max</sub> − x<sub>w_min</sub>)<br>
+                S<sub>y</sub> = (y<sub>v_max</sub> − y<sub>v_min</sub>) / (y<sub>w_max</sub> − y<sub>w_min</sub>)
+            </li>
+            <li><b style="color:var(--text)">Translação</b> — posiciona na Viewport: T(x<sub>v_min</sub>, y<sub>v_min</sub>)</li>
+        </ol>
+
+        <div class="formula-box">
+            <span class="label">Matriz composta: M = T(xv_min, yv_min) × S(sx, sy) × T(−xw_min, −yw_min)</span>
+        </div>
+    </div>
+
+    <div class="card" style="border-color:var(--yellow); box-shadow:0 0 15px var(--yellow-dim);">
+        <h3><span class="dot" style="background:var(--yellow)"></span>📏 Dimensionamento da Window (Evitar Distorções)</h3>
+        <p>Para <b>não distorcer</b> a imagem, Window e Viewport devem ter a <b>mesma razão de aspecto</b>. Calcula-se a Window a partir do <b>bounding box</b> do modelo:</p>
+
+        <div class="algo"><span class="cm">// w, h = dimensões do bounding box do modelo</span>
+<span class="cm">// wv, hv = dimensões da viewport</span>
+
+<span class="kw">Se</span> (w/h > wv/hv):
+    lx = w
+    ly = w × hv / wv
+<span class="kw">Senão:</span>
+    lx = h × wv / hv
+    ly = h
+
+<span class="cm">// Coordenadas da window (com folga de 5%)</span>
+<span class="cm">// (xc, yc) = centro do bounding box</span>
+xmin = xc − 1.05 × (lx / 2)
+xmax = xc + 1.05 × (lx / 2)
+ymin = yc − 1.05 × (ly / 2)
+ymax = yc + 1.05 × (ly / 2)</div>
+
+        <p><b>Resumo:</b> aumenta-se o lado menor do bounding box até igualar a razão de aspecto da viewport, e adiciona-se uma margem (~5%) para folga visual.</p>
     </div>
 
     <div class="card">
         <h3><span class="dot" style="background:var(--cyan)"></span>Algoritmo de Recorte — Cohen-Sutherland</h3>
         <ul>
             <li>Divide o espaço em <b>9 regiões</b> com códigos de 4 bits (acima, abaixo, esquerda, direita)</li>
+            <li>Bit 0: esquerda | Bit 1: direita | Bit 2: abaixo | Bit 3: acima</li>
             <li><b>Trivialmente aceito:</b> P1 OR P2 = 0000 (ambos dentro)</li>
             <li><b>Trivialmente recusado:</b> P1 AND P2 ≠ 0000 (ambos do mesmo lado fora)</li>
-            <li>Caso contrário: calcula interseções com as bordas da janela</li>
+            <li>Caso contrário: calcula interseções com bordas da janela</li>
         </ul>
     </div>
 </section>
@@ -625,26 +647,26 @@
 
     <div class="card">
         <h3><span class="dot" style="background:var(--green)"></span>Processo de Visualização 3D</h3>
-        <p>Semelhante ao 2D, porém inclui a etapa de <b>projeção</b> para converter a cena 3D em imagem 2D. Analogia com <b>câmera fotográfica</b>: posicionar tripé (câmera), apontar (orientação), ajustar lente (projeção), revelar foto (viewport).</p>
+        <p>Semelhante ao 2D, mas com <b>projeção</b> para converter 3D→2D. Analogia com <b>câmera</b>: posicionar tripé, apontar, ajustar lente, revelar foto.</p>
     </div>
 
     <div class="highlight cyan">
-        <b>Pipeline 3D:</b> Coord. Objeto → <b>Modelagem</b> → Coord. Mundo → <b>Câmera</b> → Coord. Câmera → <b>Projeção</b> → Coord. Normalizadas → <b>Recorte</b> → <b>Viewport</b> → <b>Rasterização</b>
+        <b>Pipeline 3D:</b> Coord. Objeto → <b>Modelagem</b> → Coord. Mundo → <b>Câmera</b> → Coord. Câmera → <b>Projeção</b> → Coord. Norm. → <b>Recorte</b> → <b>Viewport</b> → <b>Rasterização</b>
     </div>
 
     <div class="card">
         <h3><span class="dot" style="background:var(--orange)"></span>Câmera Virtual — Fatores</h3>
         <ul>
-            <li><strong>Posição da câmera</strong> (eye)</li>
-            <li><strong>Direção/Orientação</strong> — vetor câmera → ponto focal (aim)</li>
-            <li><strong>Vetor Up</strong> — define "para cima" da câmera</li>
-            <li><strong>Tipo de projeção</strong> (perspectiva ou paralela)</li>
-            <li><strong>Planos de recorte</strong> — Near Plane e Far Plane</li>
+            <li><strong>Posição (eye)</strong> — onde está a câmera</li>
+            <li><strong>Direção (aim)</strong> — para onde aponta</li>
+            <li><strong>Vetor Up</strong> — define "para cima"</li>
+            <li><strong>Tipo de projeção</strong> — perspectiva ou paralela</li>
+            <li><strong>Planos de recorte</strong> — Near e Far plane</li>
         </ul>
     </div>
 
     <div class="highlight red">
-        <b>Near/Far Plane:</b> Não enxergamos antes do Near (objetos muito perto cobririam tudo) nem depois do Far (limita o volume de visualização para performance e precisão).
+        <b>Near/Far Plane:</b> Não enxergamos antes do Near (objetos muito perto cobririam tudo) nem depois do Far (limita volume para performance e precisão numérica).
     </div>
 
     <div class="card">
@@ -652,8 +674,8 @@
         <ul>
             <li>Forma mais comum: <b>superfícies poligonais</b> (malha de triângulos)</li>
             <li>Componentes: <b>Vértices</b>, <b>Arestas</b>, <b>Faces</b>, <b>Normais</b></li>
-            <li>3 tabelas: tabela de vértices (x,y,z), tabela de arestas (pares de vértices), tabela de polígonos (conjuntos de arestas)</li>
-            <li>Estrutura de arame (wireframe) = apenas vértices + arestas</li>
+            <li>3 tabelas: vértices (x,y,z), arestas (pares de vértices), polígonos (conjuntos de arestas)</li>
+            <li>Wireframe = apenas vértices + arestas</li>
         </ul>
     </div>
 </section>
@@ -668,95 +690,77 @@
     </div>
 
     <div class="highlight green">
-        <b>Rasterização</b> = conversão de representação vetorial (geométrica) para matricial (pixels). É um processo de <b>amostragem</b> (contínuo → discreto), sujeito a aliasing.
+        <b>Rasterização</b> = vetorial → matricial (pixels). Processo de <b>amostragem</b> (contínuo → discreto), sujeito a aliasing.
     </div>
 
-    <!-- DDA -->
     <details open>
-        <summary>📐 Algoritmo DDA (Digital Differential Analyzer)</summary>
+        <summary>📐 Algoritmo DDA</summary>
         <div class="content">
-            <p><b>Ideia:</b> incremental — calcula m = Δy/Δx e incrementa y em m a cada passo de x.</p>
-            <div class="algo">
-<span class="cm">// Equação da reta: y = mx + b</span>
-<span class="cm">// m = inclinação, b = intercepto com eixo y</span>
-m = (y2 - y1) / (x2 - x1)
+            <p><b>Ideia:</b> m = Δy/Δx, incrementa y em m a cada passo de x.</p>
+            <div class="algo">m = (y2 - y1) / (x2 - x1)
 y = y1
 <span class="kw">Para</span> x = x1 <span class="kw">até</span> x2:
     pintar pixel(x, <span class="kw">round</span>(y))
-    y = y + m
-            </div>
-            <p><b>Desvantagens:</b> usa ponto flutuante, sujeito a acúmulo de erros de arredondamento, usa multiplicação/divisão → <b>lento</b>.</p>
+    y = y + m</div>
+            <p><b>Desvantagens:</b> ponto flutuante, acúmulo de erros, lento.</p>
         </div>
     </details>
 
-    <!-- BRESENHAM -->
     <details open>
         <summary>⚡ Algoritmo de Bresenham (Ponto Médio)</summary>
         <div class="content">
-            <p><b>Ideia:</b> decide incrementalmente se o próximo pixel é (x+1, y) ou (x+1, y+1), avaliando se a reta passa acima ou abaixo do <b>ponto médio</b> (x+1, y+½).</p>
-            <p><b>Vantagem:</b> usa <b>apenas soma e subtração de inteiros</b> — muito rápido!</p>
-            <div class="algo">
-a = y2 - y1
+            <p><b>Ideia:</b> decide se próximo pixel é (x+1, y) ou (x+1, y+1) avaliando o <b>ponto médio</b>. Usa <b>apenas inteiros</b>!</p>
+            <div class="algo">a = y2 - y1
 b = x1 - x2
-V = 2*a + b      <span class="cm">// variável de decisão inicial</span>
+V = 2*a + b      <span class="cm">// decisão inicial</span>
 x = x1;  y = y1
 <span class="kw">Enquanto</span> x ≤ x2:
     pintar pixel(x, y)
     x = x + 1
     <span class="kw">Se</span> V ≤ 0:
-        V = V + 2*a          <span class="cm">// vai para (x+1, y)</span>
+        V = V + 2*a          <span class="cm">// (x+1, y)</span>
     <span class="kw">Senão:</span>
-        V = V + 2*(a + b)    <span class="cm">// vai para (x+1, y+1)</span>
-        y = y + 1
-            </div>
+        V = V + 2*(a + b)    <span class="cm">// (x+1, y+1)</span>
+        y = y + 1</div>
         </div>
     </details>
 
-    <!-- CIRCULOS -->
     <details>
         <summary>⭕ Rasterização de Círculos</summary>
         <div class="content">
-            <p>Mesma ideia de avaliar ponto médio com função implícita x² + y² − r² = 0. Apenas <b>1 octante</b> é calculado, os outros 7 são simétricos (cada pixel gera 8 pintados).</p>
+            <p>Ponto médio com f(x,y) = x² + y² − r². Calcula <b>1 octante</b>, simétrico para os outros 7 (8 pixels por cálculo).</p>
         </div>
     </details>
 
-    <!-- FLOOD FILL -->
     <details>
-        <summary>🪣 Flood Fill (Preenchimento por Semente)</summary>
+        <summary>🪣 Flood Fill</summary>
         <div class="content">
-            <p>Algoritmo recursivo para preencher regiões:</p>
-            <div class="algo">
-<span class="kw">Procedure</span> FloodFill(x, y, cor, novaCor):
-    <span class="kw">Se</span> pixel(x,y) = cor <span class="kw">então</span>:
+            <div class="algo"><span class="kw">Procedure</span> FloodFill(x, y, cor, novaCor):
+    <span class="kw">Se</span> pixel(x,y) = cor:
         pixel(x,y) ← novaCor
-        FloodFill(x+1, y, cor, novaCor)  <span class="cm">// direita</span>
-        FloodFill(x-1, y, cor, novaCor)  <span class="cm">// esquerda</span>
-        FloodFill(x, y+1, cor, novaCor)  <span class="cm">// cima</span>
-        FloodFill(x, y-1, cor, novaCor)  <span class="cm">// baixo</span>
-            </div>
-            <p><b>4-conexo:</b> vizinhos N, S, E, W (borda 8-conexa).<br>
-            <b>8-conexo:</b> inclui diagonais (borda 4-conexa).</p>
+        FloodFill(x+1, y, cor, novaCor)
+        FloodFill(x-1, y, cor, novaCor)
+        FloodFill(x, y+1, cor, novaCor)
+        FloodFill(x, y-1, cor, novaCor)</div>
+            <p><b>4-conexo:</b> N,S,E,W | <b>8-conexo:</b> inclui diagonais.</p>
         </div>
     </details>
 
-    <!-- SCANLINE -->
     <details>
         <summary>📊 Scanline (Lista de Arestas Ativas)</summary>
         <div class="content">
-            <p><b>Ideia:</b> linha de varredura horizontal percorre o polígono de ymin a ymax. Para cada y, encontra interseções com arestas e preenche pixels entre pares de interseções.</p>
-            <div class="algo">
-Criar e ordenar LA (lista de arestas) por y_inicial
+            <p>Linha de varredura horizontal de ymin a ymax. Para cada y, preenche entre pares de interseções com arestas.</p>
+            <div class="algo">Criar e ordenar LA por y_inicial
 LAA ← vazia
 <span class="kw">Para</span> y = ymin <span class="kw">até</span> ymax:
     Inserir em LAA arestas com y_inicial = y
     Retirar da LAA arestas com y_final = y
     <span class="kw">Para cada par</span> A1/A2 da LAA:
-        Desenhar pixels entre A1.x_corrente e A2.x_corrente
+        Desenhar pixels entre A1.x e A2.x
     <span class="kw">Para cada</span> aresta A da LAA:
         A.x_corrente += A.dx
-    Reordenar LAA
-            </div>
-            <p><b>Regras:</b> primeiro pixel é pintado, último não. Arestas horizontais são ignoradas. Vértice conta só se for o de menor y da aresta.</p>
+    Reordenar LAA</div>
+            <p><b>Regras:</b> 1º pixel pintado, último não. Horizontais ignoradas. Vértice conta só se menor y da aresta.</p>
         </div>
     </details>
 </section>
@@ -772,69 +776,61 @@ LAA ← vazia
 
     <div class="card">
         <h3><span class="dot" style="background:var(--accent)"></span>O que são Projeções?</h3>
-        <p>Projetar pontos de espaço 3D em um plano 2D (plano de projeção), usando um <b>centro de projeção</b>. Transformações projetivas levam retas em retas, mas <b>não preservam</b> proporções.</p>
+        <p>Projetar pontos 3D no plano 2D usando um <b>centro de projeção</b>. Retas → retas, mas <b>não preserva</b> proporções.</p>
     </div>
 
     <div class="grid2">
         <div class="card">
-            <h3><span class="dot" style="background:var(--green)"></span>Projeção Paralela (Ortográfica)</h3>
+            <h3><span class="dot" style="background:var(--green)"></span>Projeção Paralela</h3>
             <ul>
                 <li>Centro de projeção no <b>infinito</b> → raios paralelos</li>
-                <li><b>Preserva</b> tamanhos e ângulos relativos</li>
-                <li>Volume de visão: <b>paralelepípedo</b></li>
-                <li>✅ Medições precisas, bom para engenharia/CAD</li>
-                <li>❌ Sem sensação de profundidade</li>
-                <li><b>Tipos:</b> ortográfica (vistas), isométrica, cavaleira, cabinet</li>
+                <li><b>Preserva</b> tamanhos relativos</li>
+                <li>Volume: <b>paralelepípedo</b></li>
+                <li>✅ Medições precisas, engenharia/CAD</li>
+                <li>❌ Sem profundidade</li>
             </ul>
         </div>
         <div class="card">
             <h3><span class="dot" style="background:var(--pink)"></span>Projeção Perspectiva</h3>
             <ul>
-                <li>Centro de projeção em ponto <b>finito</b></li>
-                <li>Objetos distantes parecem <b>menores</b> (foreshortening)</li>
-                <li>Volume de visão: <b>tronco de pirâmide</b> (frustum)</li>
-                <li>✅ Realista, sensação natural de profundidade</li>
-                <li>❌ Distorce medidas, não preserva paralelismo</li>
-                <li><b>Pontos de fuga:</b> retas paralelas convergem</li>
+                <li>Centro de projeção <b>finito</b></li>
+                <li>Objetos distantes parecem <b>menores</b></li>
+                <li>Volume: <b>tronco de pirâmide</b> (frustum)</li>
+                <li>✅ Realista, profundidade natural</li>
+                <li>❌ Distorce medidas</li>
             </ul>
         </div>
     </div>
 
     <div class="highlight yellow">
-        <b>Pontos de Fuga:</b> Na projeção perspectiva, retas paralelas convergem para um <b>ponto de fuga</b>. Pode ter 1, 2 ou 3 pontos de fuga principais (um para cada eixo coordenado). Mais pontos de fuga = mais realista (até certo ponto).
+        <b>Pontos de Fuga:</b> retas paralelas convergem em um ponto. Pode ter 1, 2 ou 3 pontos de fuga principais (um por eixo).
     </div>
 
-    <div class="card">
-        <h3><span class="dot" style="background:var(--cyan)"></span>Tipos de Projeção Paralela</h3>
-        <div class="table-wrap" style="margin-top:12px">
-            <table>
-                <thead><tr><th>Tipo</th><th>Raios</th><th>Característica</th></tr></thead>
-                <tbody>
-                    <tr><td><b>Ortográfica (Vistas)</b></td><td>⊥ ao plano, // aos eixos</td><td>Descarta uma coordenada (planta, elevação, perfil)</td></tr>
-                    <tr><td><b>Isométrica</b></td><td>⊥ ao plano, ≠ eixos</td><td>3 eixos com mesma métrica, ângulo ≈30°, redução ≈82%</td></tr>
-                    <tr><td><b>Dimétrica</b></td><td>⊥ ao plano</td><td>2 eixos com mesma métrica</td></tr>
-                    <tr><td><b>Trimétrica</b></td><td>⊥ ao plano</td><td>Orientação qualquer, 3 escalas diferentes</td></tr>
-                    <tr><td><b>Cavaleira</b></td><td>Oblíquos, β=45°</td><td>Não reduz eixo perpendicular ao plano</td></tr>
-                    <tr><td><b>Cabinet</b></td><td>Oblíquos, β≈26.6°</td><td>Reduz eixo perpendicular a metade</td></tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Tipo</th><th>Raios</th><th>Característica</th></tr></thead>
+            <tbody>
+                <tr><td><b>Ortográfica (Vistas)</b></td><td>⊥ ao plano, // eixos</td><td>Descarta uma coordenada</td></tr>
+                <tr><td><b>Isométrica</b></td><td>⊥ ao plano, ≠ eixos</td><td>3 eixos mesma métrica, ≈30°, redução ≈82%</td></tr>
+                <tr><td><b>Dimétrica</b></td><td>⊥ ao plano</td><td>2 eixos mesma métrica</td></tr>
+                <tr><td><b>Cavaleira</b></td><td>Oblíquos, β=45°</td><td>Eixo ⊥ não reduzido</td></tr>
+                <tr><td><b>Cabinet</b></td><td>Oblíquos, β≈26.6°</td><td>Eixo ⊥ reduzido à metade</td></tr>
+            </tbody>
+        </table>
     </div>
 
     <div class="highlight pink">
-        <b>Projetar sempre acarreta perda de informação!</b> A projeção descarta uma dimensão. Vários pontos 3D diferentes podem mapear para o mesmo ponto 2D.
+        <b>Projetar sempre acarreta perda de informação!</b> Vários pontos 3D podem mapear para o mesmo ponto 2D.
     </div>
 </section>
 
 </div>
 
-<!-- FOOTER -->
 <footer>
     <p>📚 Resumão de Computação Gráfica — Baseado nos materiais de aula e listas de exercícios</p>
-    <p style="margin-top:6px;opacity:0.6;">Estude com calma e boa prova! 🚀</p>
+    <p style="margin-top:6px;opacity:0.6;">Boa prova! 🚀</p>
 </footer>
 
-<!-- NAV HIGHLIGHT SCRIPT -->
 <script>
 document.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('section');
