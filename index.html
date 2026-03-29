@@ -17,7 +17,8 @@
             --surface3: #232d45;
             --border: #2a3555;
             --text: #e2e8f0;
-            --text-dim: #94a3b8;/ --accent: #6366f1;
+            --text-dim: #94a3b8;
+            --accent: #6366f1;
             --accent2: #818cf8;
             --accent-glow: rgba(99, 102, 241, 0.15);
             --green: #34d399;
@@ -653,6 +654,39 @@
                         "média")</li>
                     <li>~32 níveis: contorno quase imperceptível; 64 níveis: desaparece</li>
                 </ul>
+            </div>
+
+            <div class="card">
+                <h3><span class="dot" style="background:var(--pink)"></span>Conversão entre Formatos</h3>
+                <div class="table-wrap" style="margin-top:8px">
+                    <table>
+                        <thead>
+                            <tr><th>Conversão</th><th>Dificuldade</th><th>Características</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>Bitmap → Bitmap</b></td>
+                                <td style="color:var(--green)">Fácil</td>
+                                <td>Melhores resultados. Problemas com diferenças no tamanho da paleta de cor.</td>
+                            </tr>
+                            <tr>
+                                <td><b>Vetorial → Vetorial</b></td>
+                                <td style="color:var(--yellow)">Média</td>
+                                <td>Problemas com diferenças no nº/tipo de objetos e interpretação de medidas.</td>
+                            </tr>
+                            <tr>
+                                <td><b>Vetorial → Bitmap</b><br><span style="font-size:0.75rem;color:var(--accent2)">(Rasterização)</span></td>
+                                <td style="color:var(--yellow)">Média</td>
+                                <td>Imagem decomposta em pixels numa matriz. Qualidade depende do tamanho da matriz. Problemas de <b>serrilhado</b> (aliasing).</td>
+                            </tr>
+                            <tr>
+                                <td><b style="color:var(--pink)">Bitmap → Vetorial</b></td>
+                                <td style="color:var(--red)">Difícil</td>
+                                <td>Conversão mais difícil, <b>altos índices de falha</b>. Usa algoritmos/heurísticas de detecção de formas. Bons resultados para formas geométricas simples, <b>ruins para imagens reais</b> (fotos). Normalmente resulta em <b>perda de cores</b>.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
 
