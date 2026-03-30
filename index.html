@@ -640,7 +640,8 @@
                 <h3><span class="dot" style="background:var(--accent)"></span>Resolução e Profundidade de Cor</h3>
                 <ul>
                     <li><strong>Pixels:</strong> largura × altura | <strong>PPI:</strong> pixels/polegada (tela) |
-                        <strong>DPI:</strong> pontos/polegada (impressora)</li>
+                        <strong>DPI:</strong> pontos/polegada (impressora)
+                    </li>
                     <li><b>1 bit</b> = 2 níveis (P&B) | <b>8 bits</b> = 256 níveis | <b>24 bits</b> = ~16,7M (true
                         color) | <b>32 bits</b> = 24 + 8 alfa</li>
                 </ul>
@@ -661,7 +662,11 @@
                 <div class="table-wrap" style="margin-top:8px">
                     <table>
                         <thead>
-                            <tr><th>Conversão</th><th>Dificuldade</th><th>Características</th></tr>
+                            <tr>
+                                <th>Conversão</th>
+                                <th>Dificuldade</th>
+                                <th>Características</th>
+                            </tr>
                         </thead>
                         <tbody>
                             <tr>
@@ -675,14 +680,18 @@
                                 <td>Problemas com diferenças no nº/tipo de objetos e interpretação de medidas.</td>
                             </tr>
                             <tr>
-                                <td><b>Vetorial → Bitmap</b><br><span style="font-size:0.75rem;color:var(--accent2)">(Rasterização)</span></td>
+                                <td><b>Vetorial → Bitmap</b><br><span
+                                        style="font-size:0.75rem;color:var(--accent2)">(Rasterização)</span></td>
                                 <td style="color:var(--yellow)">Média</td>
-                                <td>Imagem decomposta em pixels numa matriz. Qualidade depende do tamanho da matriz. Problemas de <b>serrilhado</b> (aliasing).</td>
+                                <td>Imagem decomposta em pixels numa matriz. Qualidade depende do tamanho da matriz.
+                                    Problemas de <b>serrilhado</b> (aliasing).</td>
                             </tr>
                             <tr>
                                 <td><b style="color:var(--pink)">Bitmap → Vetorial</b></td>
                                 <td style="color:var(--red)">Difícil</td>
-                                <td>Conversão mais difícil, <b>altos índices de falha</b>. Usa algoritmos/heurísticas de detecção de formas. Bons resultados para formas geométricas simples, <b>ruins para imagens reais</b> (fotos). Normalmente resulta em <b>perda de cores</b>.</td>
+                                <td>Conversão mais difícil, <b>altos índices de falha</b>. Usa algoritmos/heurísticas de
+                                    detecção de formas. Bons resultados para formas geométricas simples, <b>ruins para
+                                        imagens reais</b> (fotos). Normalmente resulta em <b>perda de cores</b>.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -851,13 +860,45 @@
                 <h3><span class="dot" style="background:var(--accent)"></span>O que é Visualização 2D?</h3>
                 <p>Conjunto de técnicas que transformam informações de uma <b>estrutura de dados (modelo)</b> em uma
                     <b>imagem</b> visível. <b>Modelo</b> = representação computacional; <b>Imagem</b> = representação
-                    gráfica (pixels).</p>
+                    gráfica (pixels).
+                </p>
             </div>
 
-            <div class="highlight green">
-                <b>Pipeline de Visualização 2D:</b><br>
-                SRO (objeto) → <b>Instanciamento</b> → SRU (universo) → <b>Recorte (Window)</b> → SRS (seleção) →
-                <b>Mapeamento Window→Viewport</b> → SRD (dispositivo) → <b>Rasterização</b>
+            <!-- SVG Pipeline 2D Diagram -->
+            <div class="card" style="border-color:var(--green); overflow-x:auto;">
+                <h3><span class="dot" style="background:var(--green)"></span>Pipeline de Visualização 2D</h3>
+                <svg viewBox="0 0 340 520" style="width:100%;max-width:380px;height:auto;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="arrow2d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#818cf8"/></marker>
+                    </defs>
+                    <!-- Box 1: Modelo de Objeto -->
+                    <rect x="30" y="10" width="280" height="70" rx="10" fill="#1e1b4b" stroke="#818cf8" stroke-width="2"/>
+                    <text x="170" y="38" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="700" font-family="Inter,sans-serif">Modelo de Objeto</text>
+                    <text x="170" y="56" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="Inter,sans-serif">(Descrição Geométrica no SRO)</text>
+                    <!-- Arrow 1→2 -->
+                    <line x1="170" y1="80" x2="170" y2="110" stroke="#818cf8" stroke-width="2" marker-end="url(#arrow2d)"/>
+                    <!-- Box 2: Instanciamento -->
+                    <rect x="30" y="110" width="280" height="60" rx="10" fill="#1e1b4b" stroke="#818cf8" stroke-width="2"/>
+                    <text x="170" y="135" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="700" font-family="Inter,sans-serif">Instanciamento dos</text>
+                    <text x="170" y="153" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="700" font-family="Inter,sans-serif">Objetos (SRU)</text>
+                    <!-- Arrow 2→3 -->
+                    <line x1="170" y1="170" x2="170" y2="210" stroke="#818cf8" stroke-width="2" marker-end="url(#arrow2d)"/>
+                    <!-- Box 3: Recorte -->
+                    <rect x="30" y="210" width="280" height="50" rx="10" fill="#1e1b4b" stroke="#818cf8" stroke-width="2"/>
+                    <text x="170" y="241" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="700" font-family="Inter,sans-serif">Recorte (SRU)</text>
+                    <!-- Arrow 3→4 -->
+                    <line x1="170" y1="260" x2="170" y2="300" stroke="#818cf8" stroke-width="2" marker-end="url(#arrow2d)"/>
+                    <!-- Box 4: Mapeamento -->
+                    <rect x="30" y="300" width="280" height="60" rx="10" fill="#1e1b4b" stroke="#818cf8" stroke-width="2"/>
+                    <text x="170" y="325" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="700" font-family="Inter,sans-serif">Mapeamento</text>
+                    <text x="170" y="343" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="700" font-family="Inter,sans-serif">(SRU → SRT)</text>
+                    <!-- Arrow 4→5 -->
+                    <line x1="170" y1="360" x2="170" y2="400" stroke="#818cf8" stroke-width="2" marker-end="url(#arrow2d)"/>
+                    <!-- Box 5: Conversão -->
+                    <rect x="30" y="400" width="280" height="60" rx="10" fill="#1e1b4b" stroke="#34d399" stroke-width="2"/>
+                    <text x="170" y="425" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="700" font-family="Inter,sans-serif">Conversão</text>
+                    <text x="170" y="443" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="700" font-family="Inter,sans-serif">Vetorial-Matricial</text>
+                </svg>
             </div>
 
             <div class="card">
@@ -879,7 +920,8 @@
             <div class="card" style="border-color:var(--accent); box-shadow:0 0 20px var(--accent-glow);">
                 <h3><span class="dot" style="background:var(--accent)"></span>🔑 Transformação Window → Viewport</h3>
                 <p>A transformação Window–Viewport mapeia coordenadas do <b>mundo</b> (window) para coordenadas da
-                    <b>tela</b> (viewport). Cada ponto (x, y) do mundo é convertido para (xv, yv) na tela.</p>
+                    <b>tela</b> (viewport). Cada ponto (x, y) do mundo é convertido para (xv, yv) na tela.
+                </p>
 
                 <div class="formula-box">
                     <span class="label">📐 Fórmulas de Mapeamento Window → Viewport</span>
@@ -909,81 +951,108 @@
             </div>
 
             <div class="card" style="border-color:var(--yellow); box-shadow:0 0 15px var(--yellow-dim);">
-                <h3><span class="dot" style="background:var(--yellow)"></span>📏 Dimensionamento da Window (Evitar Distorções)</h3>
-                <p>Para <b>não distorcer</b> a imagem, Window e Viewport devem ter a <b>mesma razão de aspecto</b>. Calcula-se a Window a partir do <b>bounding box</b> do modelo:</p>
+                <h3><span class="dot" style="background:var(--yellow)"></span>📏 Dimensionamento da Window (Evitar
+                    Distorções)</h3>
+                <p>Para <b>não distorcer</b> a imagem, Window e Viewport devem ter a <b>mesma razão de aspecto</b>.
+                    Calcula-se a Window a partir do <b>bounding box</b> do modelo:</p>
 
                 <!-- SVG DIAGRAM: Bounding Box vs Viewport -->
                 <div style="display:flex;flex-wrap:wrap;gap:24px;justify-content:center;margin:20px 0;">
                     <!-- CASO 1: w/h > wv/hv -->
-                    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:20px 24px;flex:1;min-width:280px;max-width:420px;">
-                        <div style="text-align:center;font-weight:700;color:var(--pink);font-size:0.9rem;margin-bottom:14px;">Caso: w/h &gt; w<sub>v</sub>/h<sub>v</sub></div>
+                    <div
+                        style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:20px 24px;flex:1;min-width:280px;max-width:420px;">
+                        <div
+                            style="text-align:center;font-weight:700;color:var(--pink);font-size:0.9rem;margin-bottom:14px;">
+                            Caso: w/h &gt; w<sub>v</sub>/h<sub>v</sub></div>
                         <svg viewBox="0 0 400 160" style="width:100%;height:auto;" xmlns="http://www.w3.org/2000/svg">
                             <!-- Bounding Box (largo e baixo) -->
-                            <rect x="10" y="50" width="140" height="45" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,3"/>
-                            <text x="80" y="42" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="600" font-family="Inter,sans-serif">Bounding box</text>
+                            <rect x="10" y="50" width="140" height="45" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                stroke-dasharray="6,3" />
+                            <text x="80" y="42" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="600"
+                                font-family="Inter,sans-serif">Bounding box</text>
                             <!-- w seta -->
-                            <line x1="20" y1="110" x2="140" y2="110" stroke="#94a3b8" stroke-width="1"/>
-                            <line x1="20" y1="106" x2="20" y2="114" stroke="#94a3b8" stroke-width="1"/>
-                            <line x1="140" y1="106" x2="140" y2="114" stroke="#94a3b8" stroke-width="1"/>
-                            <text x="80" y="126" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="Inter,sans-serif" font-weight="600">w</text>
+                            <line x1="20" y1="110" x2="140" y2="110" stroke="#94a3b8" stroke-width="1" />
+                            <line x1="20" y1="106" x2="20" y2="114" stroke="#94a3b8" stroke-width="1" />
+                            <line x1="140" y1="106" x2="140" y2="114" stroke="#94a3b8" stroke-width="1" />
+                            <text x="80" y="126" text-anchor="middle" fill="#94a3b8" font-size="11"
+                                font-family="Inter,sans-serif" font-weight="600">w</text>
                             <!-- h seta -->
-                            <line x1="160" y1="52" x2="160" y2="93" stroke="#94a3b8" stroke-width="1"/>
-                            <line x1="156" y1="52" x2="164" y2="52" stroke="#94a3b8" stroke-width="1"/>
-                            <line x1="156" y1="93" x2="164" y2="93" stroke="#94a3b8" stroke-width="1"/>
-                            <text x="172" y="76" fill="#94a3b8" font-size="11" font-family="Inter,sans-serif" font-weight="600">h</text>
+                            <line x1="160" y1="52" x2="160" y2="93" stroke="#94a3b8" stroke-width="1" />
+                            <line x1="156" y1="52" x2="164" y2="52" stroke="#94a3b8" stroke-width="1" />
+                            <line x1="156" y1="93" x2="164" y2="93" stroke="#94a3b8" stroke-width="1" />
+                            <text x="172" y="76" fill="#94a3b8" font-size="11" font-family="Inter,sans-serif"
+                                font-weight="600">h</text>
                             <!-- Viewport (mais quadrada/alta) -->
-                            <rect x="220" y="20" width="100" height="120" fill="none" stroke="#818cf8" stroke-width="2"/>
-                            <text x="270" y="14" text-anchor="middle" fill="#818cf8" font-size="11" font-weight="700" font-family="Inter,sans-serif" font-style="italic">viewport</text>
+                            <rect x="220" y="20" width="100" height="120" fill="none" stroke="#818cf8"
+                                stroke-width="2" />
+                            <text x="270" y="14" text-anchor="middle" fill="#818cf8" font-size="11" font-weight="700"
+                                font-family="Inter,sans-serif" font-style="italic">viewport</text>
                             <!-- wv seta -->
-                            <line x1="225" y1="148" x2="315" y2="148" stroke="#818cf8" stroke-width="1"/>
-                            <line x1="225" y1="144" x2="225" y2="152" stroke="#818cf8" stroke-width="1"/>
-                            <line x1="315" y1="144" x2="315" y2="152" stroke="#818cf8" stroke-width="1"/>
-                            <text x="270" y="160" text-anchor="middle" fill="#818cf8" font-size="10" font-family="Inter,sans-serif">w<tspan font-size="8" dy="2">v</tspan></text>
+                            <line x1="225" y1="148" x2="315" y2="148" stroke="#818cf8" stroke-width="1" />
+                            <line x1="225" y1="144" x2="225" y2="152" stroke="#818cf8" stroke-width="1" />
+                            <line x1="315" y1="144" x2="315" y2="152" stroke="#818cf8" stroke-width="1" />
+                            <text x="270" y="160" text-anchor="middle" fill="#818cf8" font-size="10"
+                                font-family="Inter,sans-serif">w<tspan font-size="8" dy="2">v</tspan></text>
                             <!-- hv seta -->
-                            <line x1="330" y1="25" x2="330" y2="135" stroke="#818cf8" stroke-width="1"/>
-                            <line x1="326" y1="25" x2="334" y2="25" stroke="#818cf8" stroke-width="1"/>
-                            <line x1="326" y1="135" x2="334" y2="135" stroke="#818cf8" stroke-width="1"/>
-                            <text x="348" y="82" fill="#818cf8" font-size="10" font-family="Inter,sans-serif">h<tspan font-size="8" dy="2">v</tspan></text>
+                            <line x1="330" y1="25" x2="330" y2="135" stroke="#818cf8" stroke-width="1" />
+                            <line x1="326" y1="25" x2="334" y2="25" stroke="#818cf8" stroke-width="1" />
+                            <line x1="326" y1="135" x2="334" y2="135" stroke="#818cf8" stroke-width="1" />
+                            <text x="348" y="82" fill="#818cf8" font-size="10" font-family="Inter,sans-serif">h<tspan
+                                    font-size="8" dy="2">v</tspan></text>
                         </svg>
-                        <div style="margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--green);line-height:1.6;">
+                        <div
+                            style="margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--green);line-height:1.6;">
                             lx = w<br>
                             ly = w × h<sub style="color:var(--cyan)">v</sub> / w<sub style="color:var(--cyan)">v</sub>
                         </div>
                     </div>
 
                     <!-- CASO 2: senão -->
-                    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:20px 24px;flex:1;min-width:280px;max-width:420px;">
-                        <div style="text-align:center;font-weight:700;color:var(--green);font-size:0.9rem;margin-bottom:14px;">Senão (w/h ≤ w<sub>v</sub>/h<sub>v</sub>)</div>
+                    <div
+                        style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:20px 24px;flex:1;min-width:280px;max-width:420px;">
+                        <div
+                            style="text-align:center;font-weight:700;color:var(--green);font-size:0.9rem;margin-bottom:14px;">
+                            Senão (w/h ≤ w<sub>v</sub>/h<sub>v</sub>)</div>
                         <svg viewBox="0 0 400 160" style="width:100%;height:auto;" xmlns="http://www.w3.org/2000/svg">
                             <!-- Bounding Box (alto e estreito) -->
-                            <rect x="30" y="15" width="70" height="120" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,3"/>
-                            <text x="65" y="10" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="600" font-family="Inter,sans-serif">Bounding box</text>
+                            <rect x="30" y="15" width="70" height="120" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                stroke-dasharray="6,3" />
+                            <text x="65" y="10" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="600"
+                                font-family="Inter,sans-serif">Bounding box</text>
                             <!-- w seta -->
-                            <line x1="35" y1="145" x2="95" y2="145" stroke="#94a3b8" stroke-width="1"/>
-                            <line x1="35" y1="141" x2="35" y2="149" stroke="#94a3b8" stroke-width="1"/>
-                            <line x1="95" y1="141" x2="95" y2="149" stroke="#94a3b8" stroke-width="1"/>
-                            <text x="65" y="158" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="Inter,sans-serif" font-weight="600">w</text>
+                            <line x1="35" y1="145" x2="95" y2="145" stroke="#94a3b8" stroke-width="1" />
+                            <line x1="35" y1="141" x2="35" y2="149" stroke="#94a3b8" stroke-width="1" />
+                            <line x1="95" y1="141" x2="95" y2="149" stroke="#94a3b8" stroke-width="1" />
+                            <text x="65" y="158" text-anchor="middle" fill="#94a3b8" font-size="11"
+                                font-family="Inter,sans-serif" font-weight="600">w</text>
                             <!-- h seta -->
-                            <line x1="115" y1="18" x2="115" y2="132" stroke="#94a3b8" stroke-width="1"/>
-                            <line x1="111" y1="18" x2="119" y2="18" stroke="#94a3b8" stroke-width="1"/>
-                            <line x1="111" y1="132" x2="119" y2="132" stroke="#94a3b8" stroke-width="1"/>
-                            <text x="127" y="78" fill="#94a3b8" font-size="11" font-family="Inter,sans-serif" font-weight="600">h</text>
+                            <line x1="115" y1="18" x2="115" y2="132" stroke="#94a3b8" stroke-width="1" />
+                            <line x1="111" y1="18" x2="119" y2="18" stroke="#94a3b8" stroke-width="1" />
+                            <line x1="111" y1="132" x2="119" y2="132" stroke="#94a3b8" stroke-width="1" />
+                            <text x="127" y="78" fill="#94a3b8" font-size="11" font-family="Inter,sans-serif"
+                                font-weight="600">h</text>
                             <!-- Viewport (largo) -->
-                            <rect x="190" y="40" width="160" height="80" fill="none" stroke="#818cf8" stroke-width="2"/>
-                            <text x="270" y="34" text-anchor="middle" fill="#818cf8" font-size="11" font-weight="700" font-family="Inter,sans-serif" font-style="italic">viewport</text>
+                            <rect x="190" y="40" width="160" height="80" fill="none" stroke="#818cf8"
+                                stroke-width="2" />
+                            <text x="270" y="34" text-anchor="middle" fill="#818cf8" font-size="11" font-weight="700"
+                                font-family="Inter,sans-serif" font-style="italic">viewport</text>
                             <!-- wv seta -->
-                            <line x1="195" y1="130" x2="345" y2="130" stroke="#818cf8" stroke-width="1"/>
-                            <line x1="195" y1="126" x2="195" y2="134" stroke="#818cf8" stroke-width="1"/>
-                            <line x1="345" y1="126" x2="345" y2="134" stroke="#818cf8" stroke-width="1"/>
-                            <text x="270" y="145" text-anchor="middle" fill="#818cf8" font-size="10" font-family="Inter,sans-serif">w<tspan font-size="8" dy="2">v</tspan></text>
+                            <line x1="195" y1="130" x2="345" y2="130" stroke="#818cf8" stroke-width="1" />
+                            <line x1="195" y1="126" x2="195" y2="134" stroke="#818cf8" stroke-width="1" />
+                            <line x1="345" y1="126" x2="345" y2="134" stroke="#818cf8" stroke-width="1" />
+                            <text x="270" y="145" text-anchor="middle" fill="#818cf8" font-size="10"
+                                font-family="Inter,sans-serif">w<tspan font-size="8" dy="2">v</tspan></text>
                             <!-- hv seta -->
-                            <line x1="360" y1="44" x2="360" y2="116" stroke="#818cf8" stroke-width="1"/>
-                            <line x1="356" y1="44" x2="364" y2="44" stroke="#818cf8" stroke-width="1"/>
-                            <line x1="356" y1="116" x2="364" y2="116" stroke="#818cf8" stroke-width="1"/>
-                            <text x="378" y="82" fill="#818cf8" font-size="10" font-family="Inter,sans-serif">h<tspan font-size="8" dy="2">v</tspan></text>
+                            <line x1="360" y1="44" x2="360" y2="116" stroke="#818cf8" stroke-width="1" />
+                            <line x1="356" y1="44" x2="364" y2="44" stroke="#818cf8" stroke-width="1" />
+                            <line x1="356" y1="116" x2="364" y2="116" stroke="#818cf8" stroke-width="1" />
+                            <text x="378" y="82" fill="#818cf8" font-size="10" font-family="Inter,sans-serif">h<tspan
+                                    font-size="8" dy="2">v</tspan></text>
                         </svg>
-                        <div style="margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--green);line-height:1.6;">
-                            lx = h × w<sub style="color:var(--cyan)">v</sub> / h<sub style="color:var(--cyan)">v</sub><br>
+                        <div
+                            style="margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--green);line-height:1.6;">
+                            lx = h × w<sub style="color:var(--cyan)">v</sub> / h<sub
+                                style="color:var(--cyan)">v</sub><br>
                             ly = h
                         </div>
                     </div>
@@ -1030,9 +1099,66 @@
                     posicionar tripé, apontar, ajustar lente, revelar foto.</p>
             </div>
 
-            <div class="highlight cyan">
-                <b>Pipeline 3D:</b> Coord. Objeto → <b>Modelagem</b> → Coord. Mundo → <b>Câmera</b> → Coord. Câmera →
-                <b>Projeção</b> → Coord. Norm. → <b>Recorte</b> → <b>Viewport</b> → <b>Rasterização</b>
+            <!-- SVG Pipeline 3D Diagram -->
+            <div class="card" style="border-color:var(--cyan); overflow-x:auto;">
+                <h3><span class="dot" style="background:var(--cyan)"></span>Pipeline de Visualização 3D</h3>
+                <svg viewBox="0 0 820 340" style="width:100%;height:auto;display:block;min-width:600px;" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="arrow3d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#22d3ee"/></marker>
+                        <marker id="arrow3dPink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#f472b6"/></marker>
+                    </defs>
+                    <!-- ROW 1 -->
+                    <!-- Box: Descrição Geométrica -->
+                    <rect x="10" y="60" width="140" height="55" rx="8" fill="#1e1b4b" stroke="#22d3ee" stroke-width="2"/>
+                    <text x="80" y="83" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="700" font-family="Inter,sans-serif">Descrição</text>
+                    <text x="80" y="100" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="700" font-family="Inter,sans-serif">Geométrica</text>
+                    <!-- Arrow → -->
+                    <line x1="150" y1="87" x2="180" y2="87" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrow3d)"/>
+                    <!-- Box: Transf. de Câmera -->
+                    <rect x="180" y="60" width="150" height="55" rx="8" fill="#1e1b4b" stroke="#22d3ee" stroke-width="2"/>
+                    <text x="255" y="83" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="700" font-family="Inter,sans-serif">Transformação</text>
+                    <text x="255" y="100" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="700" font-family="Inter,sans-serif">de Câmera</text>
+                    <!-- Arrow → -->
+                    <line x1="330" y1="87" x2="360" y2="87" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrow3d)"/>
+                    <!-- Box: Recorte -->
+                    <rect x="360" y="60" width="120" height="55" rx="8" fill="#1e1b4b" stroke="#22d3ee" stroke-width="2"/>
+                    <text x="420" y="92" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="700" font-family="Inter,sans-serif">Recorte</text>
+                    <!-- Volume de Visualização (acima, conecta ao Recorte) -->
+                    <rect x="370" y="0" width="130" height="40" rx="8" fill="#162040" stroke="#f472b6" stroke-width="1.5" stroke-dasharray="5,3"/>
+                    <text x="435" y="16" text-anchor="middle" fill="#f472b6" font-size="9.5" font-weight="600" font-family="Inter,sans-serif">Volume de</text>
+                    <text x="435" y="30" text-anchor="middle" fill="#f472b6" font-size="9.5" font-weight="600" font-family="Inter,sans-serif">Visualização</text>
+                    <line x1="435" y1="40" x2="435" y2="60" stroke="#f472b6" stroke-width="1.5" marker-end="url(#arrow3dPink)"/>
+                    <!-- Arrow → -->
+                    <line x1="480" y1="87" x2="510" y2="87" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrow3d)"/>
+                    <!-- Box: Projeção -->
+                    <rect x="510" y="60" width="120" height="55" rx="8" fill="#1e1b4b" stroke="#22d3ee" stroke-width="2"/>
+                    <text x="570" y="92" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="700" font-family="Inter,sans-serif">Projeção</text>
+                    <!-- Arrow ↓ (Projeção to Row 2) -->
+                    <line x1="570" y1="115" x2="570" y2="180" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrow3d)"/>
+
+                    <!-- ROW 2 (right to left) -->
+                    <!-- Box: Mapeamento -->
+                    <rect x="490" y="180" width="160" height="55" rx="8" fill="#1e1b4b" stroke="#22d3ee" stroke-width="2"/>
+                    <text x="570" y="212" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="700" font-family="Inter,sans-serif">Mapeamento</text>
+                    <!-- Window & Viewport (abaixo do Mapeamento) -->
+                    <rect x="460" y="255" width="110" height="38" rx="7" fill="#162040" stroke="#f472b6" stroke-width="1.5" stroke-dasharray="5,3"/>
+                    <text x="515" y="271" text-anchor="middle" fill="#f472b6" font-size="9" font-weight="600" font-family="Inter,sans-serif">Window no plano</text>
+                    <text x="515" y="283" text-anchor="middle" fill="#f472b6" font-size="9" font-weight="600" font-family="Inter,sans-serif">de projeção</text>
+                    <line x1="515" y1="255" x2="540" y2="235" stroke="#f472b6" stroke-width="1.5" marker-end="url(#arrow3dPink)"/>
+                    <rect x="590" y="255" width="90" height="38" rx="7" fill="#162040" stroke="#f472b6" stroke-width="1.5" stroke-dasharray="5,3"/>
+                    <text x="635" y="278" text-anchor="middle" fill="#f472b6" font-size="9.5" font-weight="600" font-family="Inter,sans-serif">Viewport</text>
+                    <line x1="635" y1="255" x2="610" y2="235" stroke="#f472b6" stroke-width="1.5" marker-end="url(#arrow3dPink)"/>
+                    <!-- Arrow ← (Mapeamento to Rasterização) -->
+                    <line x1="490" y1="207" x2="430" y2="207" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrow3d)"/>
+                    <!-- Box: Rasterização -->
+                    <rect x="290" y="180" width="140" height="55" rx="8" fill="#1e1b4b" stroke="#22d3ee" stroke-width="2"/>
+                    <text x="360" y="212" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="700" font-family="Inter,sans-serif">Rasterização</text>
+                    <!-- Arrow ← -->
+                    <line x1="290" y1="207" x2="230" y2="207" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrow3d)"/>
+                    <!-- Box: Imagem -->
+                    <rect x="100" y="180" width="130" height="55" rx="8" fill="#1e1b4b" stroke="#34d399" stroke-width="2"/>
+                    <text x="165" y="212" text-anchor="middle" fill="#34d399" font-size="13" font-weight="800" font-family="Inter,sans-serif" font-style="italic">Imagem</text>
+                </svg>
             </div>
 
             <div class="card">
